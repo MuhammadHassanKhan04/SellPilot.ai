@@ -1,0 +1,40 @@
+// This is your Prisma schema file
+// For Prisma 7+, connection URL is configured in prisma.config.ts
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  price       Float
+  quantity    Int      @default(1)
+  tags        String
+  category    String?
+  images      String
+  status      String   @default("draft")
+  etsyListingId   String?
+  amazonListingId String?
+  rawInput    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Integration {
+  id           String   @id @default(cuid())
+  platform     String   @unique
+  accessToken  String?
+  refreshToken String?
+  tokenExpiry  DateTime?
+  shopId       String?
+  sellerId     String?
+  isConnected  Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
