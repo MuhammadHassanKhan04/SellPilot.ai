@@ -81,36 +81,36 @@
    ═══════════════════════════════════════════════════ */
 html.light-theme {
   /* Backgrounds */
-  --bg-root: #f4f5f8;
-  --bg-panel: rgba(0, 0, 0, 0.02);
+  --bg-root: #f4f6fa;
+  --bg-panel: #ffffff;
   --bg-card: #ffffff;
-  --bg-card-hover: #f9fafb;
+  --bg-card-hover: #f8fafc;
   --bg-input: #ffffff;
-  --bg-elevated: #f3f4f6;
+  --bg-elevated: #f1f5f9;
 
   /* Borders */
-  --border-subtle: #e5e7eb;
-  --border-default: #d1d5db;
-  --border-strong: #9ca3af;
+  --border-subtle: #e2e8f0;
+  --border-default: #cbd5e1;
+  --border-strong: #94a3b8;
 
   /* Text */
-  --text-1: #111827;
-  --text-2: #4b5563;
-  --text-3: #9ca3af;
+  --text-1: #0f172a;
+  --text-2: #334155;
+  --text-3: #64748b;
 
   /* Layout Backgrounds */
-  --bg-header: rgba(255, 255, 255, 0.85);
-  --bg-sidebar: rgba(255, 255, 255, 0.9);
+  --bg-header: rgba(255, 255, 255, 0.92);
+  --bg-sidebar: #ffffff;
 
   /* Gradients overrides */
-  --grad-mesh: radial-gradient(ellipse at 20% 50%, rgba(124,109,250,0.04) 0%, transparent 50%),
-               radial-gradient(ellipse at 80% 20%, rgba(176,106,255,0.02) 0%, transparent 50%),
-               radial-gradient(ellipse at 50% 80%, rgba(0,212,170,0.02) 0%, transparent 50%);
+  --grad-mesh: radial-gradient(ellipse at 20% 50%, rgba(124,109,250,0.05) 0%, transparent 50%),
+               radial-gradient(ellipse at 80% 20%, rgba(176,106,255,0.03) 0%, transparent 50%),
+               radial-gradient(ellipse at 50% 80%, rgba(0,212,170,0.03) 0%, transparent 50%);
 
   /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,0.08);
 }
 
 /* ═══════════════════════════════════════════════════
@@ -146,8 +146,12 @@ body::before {
   100% { opacity: 0.7; transform: scale(1); }
 }
 
-a { color: var(--brand-light); text-decoration: none; transition: color var(--t-fast); }
-a:hover { color: white; }
+a { color: var(--brand); text-decoration: none; transition: color var(--t-fast); }
+a:hover { color: var(--brand-light); }
+.public-nav a { text-decoration: none; font-size: 14px; font-weight: 500; transition: color var(--t-fast); }
+.inactive-link { color: var(--text-2); }
+.inactive-link:hover { color: var(--text-1); }
+.active-link { color: var(--brand); font-weight: 600; }
 button { cursor: pointer; font-family: inherit; }
 input, textarea, select { font-family: inherit; }
 img, video { max-width: 100%; }
@@ -362,7 +366,7 @@ img, video { max-width: 100%; }
 ═══════════════════════════════════════════════════ */
 .page-header {
   position: sticky; top: 0; z-index: 50;
-  background: rgba(7, 7, 26, 0.8);
+  background: var(--bg-header);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border-bottom: 1px solid var(--border-subtle);
@@ -801,7 +805,7 @@ img, video { max-width: 100%; }
 }
 
 .form-textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
-.form-select option { background: #10102a; }
+.form-select option { background: var(--bg-card); color: var(--text-1); }
 
 .form-hint { font-size: 11.5px; color: var(--text-3); line-height: 1.5; }
 .char-count { font-size: 11.5px; color: var(--text-3); text-align: right; }
@@ -1108,7 +1112,8 @@ img, video { max-width: 100%; }
 }
 
 .toast {
-  background: rgba(14, 14, 36, 0.95);
+  background: var(--bg-card);
+  color: var(--text-1);
   border: 1px solid var(--border-default);
   border-radius: var(--r-lg);
   padding: 13px 16px;
@@ -1137,7 +1142,8 @@ img, video { max-width: 100%; }
 }
 
 .modal {
-  background: rgba(12, 12, 30, 0.97);
+  background: var(--bg-card);
+  color: var(--text-1);
   border: 1px solid var(--border-default);
   border-radius: var(--r-2xl);
   padding: 32px;

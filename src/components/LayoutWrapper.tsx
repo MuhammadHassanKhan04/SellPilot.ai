@@ -39,7 +39,7 @@ export default function LayoutWrapper({ children }: LayoutWrapperProps) {
       {/* Public Header */}
       <header style={{
         position: 'sticky', top: 0, zIndex: 100,
-        background: 'rgba(7, 7, 26, 0.8)',
+        background: 'var(--bg-header)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
         borderBottom: '1px solid var(--border-subtle)',
@@ -80,7 +80,7 @@ export default function LayoutWrapper({ children }: LayoutWrapperProps) {
 
       {/* Public Footer */}
       <footer style={{
-        background: 'rgba(5, 5, 20, 0.95)',
+        background: 'var(--bg-sidebar)',
         borderTop: '1px solid var(--border-subtle)',
         padding: '48px 24px 24px',
         color: 'var(--text-2)',
