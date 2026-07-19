@@ -1,15 +1,30 @@
+import fs from 'fs';
 import path from 'path';
 import Database from 'better-sqlite3';
 import crypto from 'crypto';
 
-const DB_PATH = path.join(process.cwd(), 'prisma', 'dev.db');
+const IS_VERCEL = process.env.VERCEL === '1' || process.env.NOW_BUILDER === '1';
+
+const DB_PATH = IS_VERCEL
+  ? path.join('/tmp', 'dev.db')
+  : path.join(process.cwd(), 'prisma', 'dev.db');
 
 let _db: Database.Database | null = null;
 
 export function getDb(): Database.Database {
   if (!_db) {
+    // Ensure parent directory exists for DB path
+    const dir = path.dirname(DB_PATH);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+
     _db = new Database(DB_PATH);
-    _db.pragma('journal_mode = WAL');
+    if (!IS_VERCEL) {
+      try {
+        _db.pragma('journal_mode = WAL');
+      } catch {}
+    }
     _db.pragma('foreign_keys = ON');
     initTables(_db);
   }
