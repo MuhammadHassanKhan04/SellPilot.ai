@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Sidebar from './Sidebar';
+import ThemeToggle from './ThemeToggle';
 
 interface LayoutWrapperProps {
   children: React.ReactNode;
@@ -66,6 +67,7 @@ export default function LayoutWrapper({ children }: LayoutWrapperProps) {
 
         {/* Actions */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <ThemeToggle />
           <Link href="/login" className="btn btn-ghost btn-sm">Sign In</Link>
           <Link href="/signup" className="btn btn-primary btn-sm">Get Started</Link>
         </div>

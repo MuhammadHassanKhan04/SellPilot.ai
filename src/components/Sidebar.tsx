@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import ThemeToggle from './ThemeToggle';
 
 interface ConnectionStatus { etsy: boolean; amazon: boolean; }
 
@@ -96,13 +97,16 @@ export default function Sidebar() {
           <span className="chip-status">{status.amazon ? 'Connected' : 'Disconnected'}</span>
         </div>
 
-        <button
-          onClick={handleLogout}
-          className="btn btn-danger btn-sm"
-          style={{ width: '100%', marginTop: 8 }}
-        >
-          🚪 Sign Out
-        </button>
+        <div style={{ display: 'flex', gap: 8, marginTop: 12 }}>
+          <ThemeToggle />
+          <button
+            onClick={handleLogout}
+            className="btn btn-danger btn-sm"
+            style={{ flex: 1, marginTop: 0 }}
+          >
+            🚪 Sign Out
+          </button>
+        </div>
       </div>
     </aside>
   );

@@ -25,6 +25,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: `
+          (function() {
+            try {
+              const theme = localStorage.getItem('sellpilot-theme') || 'dark';
+              if (theme === 'light') {
+                document.documentElement.classList.add('light-theme');
+              }
+            } catch (e) {}
+          })()
+        ` }} />
+      </head>
       <body>
         <LayoutWrapper>
           {children}
